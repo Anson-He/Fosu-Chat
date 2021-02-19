@@ -189,6 +189,21 @@ public class Registered extends JFrame{
                                 break;
                             }
                             else{
+                                /*
+                                System.out.println("正在创建账号表...");
+                                //创建一个这个账号的表，用于储存好友,表名为姓名+学号后三位，如：何宇浩411
+                                String rf;
+                                rf = "create table "+jtext6.getText()+jtext1.getText().substring(jtext1.getText().length()-3,jtext1.getText().length())+" (id varchar(11) not null primary key,name char(5),class1 char(20));";
+                                try{
+                                    sql.execute(rf);
+                                    System.out.println("账号表创建成功");
+                                }
+                                catch (SQLException e){
+                                    e.printStackTrace();
+                                    JOptionPane.showMessageDialog(null, "注册失败！","错误",JOptionPane.ERROR_MESSAGE);
+                                    break;
+                                }
+                                 */
                                 //注册成功要把登录信息写入数据库
                                 rs3 = sql.executeQuery("select class1 from registered where id ="+jtext1.getText());
                                 while (rs3.next()){
@@ -216,6 +231,7 @@ public class Registered extends JFrame{
                                 System.out.println("注册成功");
                                 rs3.close();
                                 con.close();
+                                System.out.println("数据库已断开");
                                 //注册成功后跳转
                                 login ll=new login();//为跳转的界面
                                 ll.init();
