@@ -241,7 +241,7 @@ public class Registered extends JFrame{
                         }
                         catch (Exception e){
                             JOptionPane.showMessageDialog(null, "没有该学号信息，请联系管理员！","错误",JOptionPane.ERROR_MESSAGE);
-                            //e.printStackTrace();
+                            e.printStackTrace();
                         }
                         break;
                     }

@@ -9,11 +9,11 @@ public class GetDBConnection {
         Connection con=null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/fosu?serverTimezone=UTC","root","hyh010710" );
+            con=DriverManager.getConnection("jdbc:mysql://47.98.162.4:3306/fosu?serverTimezone=UTC","fosu","hyh010710" );
         } catch (ClassNotFoundException e) {
             System.out.println("没有找到数据库驱动");
         } catch (SQLException e) {
-            System.out.println("数据库连接失败");
+            System.out.println(e);
         }
         return con;
     }

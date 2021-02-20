@@ -207,9 +207,12 @@ public class Password extends JFrame{
                             }
                             else{
                                 //更新数据库
-                                String s = "update login set pwd="+pwd+" where id="+jtext1.getText();
+                                String s = "update login set pwd=? where id=?";
+                                System.out.println(s);
                                 try{
                                     ps = con.prepareStatement(s);
+                                    ps.setString(1,pwd);
+                                    ps.setString(2,jtext1.getText());
                                     ps.executeUpdate();//执行语句
 
                                     System.out.println("数据库更新成功!");
