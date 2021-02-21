@@ -116,7 +116,7 @@ public class login extends JFrame{
                     if(n.equals(pwd)){
                         System.out.println("登录成功");
                         System.out.println("账户初始化中...");
-                        myfriend user = new myfriend();
+                        me user = new me();
                         ResultSet a;
                         ResultSet b;
                         String a1;

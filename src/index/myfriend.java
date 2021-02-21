@@ -25,32 +25,11 @@ public class myfriend extends JFrame {
         this.user_class1 = class1;
     }
     private static JFrame jf_1 = null;//好友列表的框架
-    private static JPanel jp_1;//个人信息的版面
 
-    private static JButton bt1 = null;//刷新好友列表按钮
-    private static JButton bt2 = null;//添加好友按钮
-    private static JLabel jl_name = null;//姓名
-    private static JLabel jl_id = null;//学号
-    private static JLabel jl_class1 = null;//班级
 
     private static JList<Object> l = new JList<Object>();
     //滚动面板
     private JScrollPane jsp = new JScrollPane();
-
-
-    /*private static JTextField jtext1;//学号
-    private static JPasswordField jtext2;//密码
-    private static JPasswordField jtext3;//确认密码
-    private static JTextField jtext4;//密保1
-    private static JTextField jtext5;//密保2
-    private static JTextField jtext6;//姓名
-
-    private static JLabel jl_password;//密码
-    private static JLabel jl_password_again;//确认密码
-    private static JLabel mb1;//密保问题1
-    private static JLabel mb2;//密保问题2
-    private static JLabel jl_title;*/
-
 
     public void init(){
         //输出账户信息
@@ -141,7 +120,6 @@ public class myfriend extends JFrame {
 
 
         jf_1.setVisible(true);
-        jf_1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jf_1.setLocation(200,50);
     }
     public static void main(String args[]){
