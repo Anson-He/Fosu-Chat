@@ -28,7 +28,7 @@ public class Password extends JFrame{
     public void init (){//初始化登陆界面
         Font font =new Font("黑体", Font.PLAIN, 20);//设置字体
         Font title_font = new Font("黑体",Font.PLAIN,50);//设置大标题字体
-        jf_1=new JFrame("Fosu-Contact");
+        jf_1=new JFrame("Fosu-Chat");
         jf_1.setSize(650, 680);
 
         jf_1.setResizable(false);
@@ -123,7 +123,7 @@ public class Password extends JFrame{
         jf_1.add(jl_1);
         jf_1.setVisible(true);
         jf_1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jf_1.setLocation(300,400);
+        jf_1.setLocation(400,50);
 
         ActionListener bt1_s = new ActionListener() {
             @Override
@@ -253,8 +253,7 @@ public class Password extends JFrame{
     }
 
     public static void main(String[] args) {
-        Password pl = new Password();
-        pl.init();
-
+        login hl =new login();
+        hl.init();
     }
 }

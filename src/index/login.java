@@ -11,7 +11,6 @@ import java.sql.Statement;
 import javax.swing.*;
 
 public class login extends JFrame{
-    private static int count=0;
     private static JButton bt1;//登陆按钮
     private static JButton bt2;//修改按钮
     private static JButton bt3;//注册按钮
@@ -22,10 +21,11 @@ public class login extends JFrame{
     private static JLabel jl_admin;
     private static JLabel jl_password;
     private static JLabel jl_title;
+
     public void init (){//初始化登陆界面
         Font font =new Font("黑体", Font.PLAIN, 20);//设置字体
         Font title_font = new Font("黑体",Font.PLAIN,50);//设置大标题字体
-        jf_1=new JFrame("Fosu-Contact");
+        jf_1=new JFrame("Fosu-Chat");
         jf_1.setSize(650, 680);
 
         jf_1.setResizable(false);
@@ -85,7 +85,7 @@ public class login extends JFrame{
         jf_1.add(jl_1);
         jf_1.setVisible(true);
         jf_1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jf_1.setLocation(300,400);
+        jf_1.setLocation(400,50);
         //登陆点击事件
         ActionListener bt1_ls=new ActionListener() {
             @Override
@@ -115,6 +115,28 @@ public class login extends JFrame{
                     }
                     if(n.equals(pwd)){
                         System.out.println("登录成功");
+                        System.out.println("账户初始化中...");
+                        myfriend user = new myfriend();
+                        ResultSet a;
+                        ResultSet b;
+                        String a1;
+                        String b1;
+                        a = sql.executeQuery("select name from login where id="+jtext1.getText());
+                        while(a.next()){
+                            a1 = a.getString(1);
+                            System.out.println(a1);
+                            user.setname(a1);
+                        }
+                        b = sql.executeQuery("select class1 from login where id="+jtext1.getText());
+                        while(b.next()){
+                            b1 = b.getString(1);
+                            System.out.println(b1);
+                            user.setclass1(b1);
+                        }
+                        user.setid(jtext1.getText());
+                        System.out.println("账户初始化成功！");
+                        user.init();
+                        jf_1.dispose();
                     }
                     else{
                         JOptionPane.showMessageDialog(null, "密码错误！","错误",JOptionPane.ERROR_MESSAGE);
@@ -123,6 +145,7 @@ public class login extends JFrame{
                 }
                 catch (Exception e){
                     JOptionPane.showMessageDialog(null, "登陆错误！","错误",JOptionPane.ERROR_MESSAGE);
+                    e.printStackTrace();
                 }
             }
         };

@@ -28,7 +28,7 @@ public class Registered extends JFrame{
     public void init (){//初始化登陆界面
         Font font =new Font("黑体", Font.PLAIN, 20);//设置字体
         Font title_font = new Font("黑体",Font.PLAIN,50);//设置大标题字体
-        jf_1=new JFrame("Fosu-Contact");
+        jf_1=new JFrame("Fosu-Chat");
         jf_1.setSize(650, 680);
 
         jf_1.setResizable(false);
@@ -123,7 +123,7 @@ public class Registered extends JFrame{
         jf_1.add(jl_1);
         jf_1.setVisible(true);
         jf_1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jf_1.setLocation(300,400);
+        jf_1.setLocation(400,50);
         ActionListener bt1_s = new ActionListener() {//确定按钮的事件
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -189,7 +189,7 @@ public class Registered extends JFrame{
                                 break;
                             }
                             else{
-                                /*
+
                                 System.out.println("正在创建账号表...");
                                 //创建一个这个账号的表，用于储存好友,表名为姓名+学号后三位，如：何宇浩411
                                 String rf;
@@ -203,7 +203,7 @@ public class Registered extends JFrame{
                                     JOptionPane.showMessageDialog(null, "注册失败！","错误",JOptionPane.ERROR_MESSAGE);
                                     break;
                                 }
-                                 */
+
                                 //注册成功要把登录信息写入数据库
                                 rs3 = sql.executeQuery("select class1 from registered where id ="+jtext1.getText());
                                 while (rs3.next()){
@@ -262,8 +262,8 @@ public class Registered extends JFrame{
     }
 
     public static void main(String[] args) {
-        Registered ml=new Registered();
-        ml.init();
+        login hl =new login();
+        hl.init();
 
     }
 }
