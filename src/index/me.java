@@ -30,6 +30,10 @@ public class me {
     private static JButton bt3;//注销按钮
 
     public void init(){
+        myfriend mf = new myfriend();
+        mf.setid(user_id);
+        mf.setname(user_name);
+        mf.init();
         //输出个人信息
         System.out.println(user_id);
         System.out.println(user_name);
@@ -83,9 +87,11 @@ public class me {
         ActionListener bs_1 = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                mf.reload();
                 myfriend mf = new myfriend();
                 mf.setid(user_id);
                 mf.setname(user_name);
+                mf.setclass1(user_class1);
                 mf.init();
             }
         };

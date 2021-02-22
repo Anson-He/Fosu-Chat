@@ -32,6 +32,8 @@ public class myfriend extends JFrame {
     private JScrollPane jsp = new JScrollPane();
 
     public void init(){
+        l = new JList<Object>();
+        jsp = new JScrollPane();
         //输出账户信息
         System.out.println(user_id);
         System.out.println(user_name);
@@ -77,7 +79,7 @@ public class myfriend extends JFrame {
 
         l.setFixedCellHeight(60);   //设置列表单元高度
 
-        jsp.setViewportView(l);   //l添加进去滚动面板
+        jsp.setViewportView(l);   //添加进去滚动面板
            //添加渲染
         l.setBorder(BorderFactory.createTitledBorder("我的好友"));
         l.setModel(model);
@@ -86,7 +88,7 @@ public class myfriend extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 if(e.getClickCount() == 2) {
 
-                    System.out.println(l.getAnchorSelectionIndex());   //
+                    System.out.println(l.getAnchorSelectionIndex());
                 }
             }
         });
@@ -114,6 +116,7 @@ public class myfriend extends JFrame {
         Font font =new Font("黑体", Font.PLAIN, 20);//设置字体
         jf_1=new JFrame("Fosu-Chat");
         jf_1.setSize(400, 800);
+        //jf_1.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 
         jf_1.add(jsp);
@@ -122,10 +125,12 @@ public class myfriend extends JFrame {
         jf_1.setVisible(true);
         jf_1.setLocation(200,50);
     }
+    public void reload(){
+        jf_1.dispose();
+    }
     public static void main(String args[]){
         login hl =new login();
         hl.init();
     }
-
 
 }
