@@ -143,7 +143,7 @@ public class newfriend {
                     oOut = new ObjectOutputStream(socket.getOutputStream());
                     //1、客户端登录处理
                     //向服务器发送登录信息（名字和消息类型）
-                    String name = id_wo;
+                    String name = id_wo+"sure";
                     message = new Message(name, id, MessageType.TYPE_SEND, "321456987456321123654789");
                     //发送给服务器
                     System.out.println("正在发送给服务器");
@@ -173,6 +173,8 @@ public class newfriend {
                     ea.printStackTrace();
                 }
                 try {
+                    message = new Message(id_wo+"sure",null,MessageType.TYPE_CLOSE,null);
+                    oOut.writeObject(message);
                     oOut.close();
                     socket.close();
                 } catch (IOException e) {
@@ -187,6 +189,7 @@ public class newfriend {
         bt_2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                jf_1.dispose();
                 Connection con4= null;
                 PreparedStatement ps4 = null;
                 ResultSet rs4 = null;
@@ -205,7 +208,6 @@ public class newfriend {
                 catch (SQLException ea){
                     ea.printStackTrace();
                 }
-                jf_1.dispose();
                 try {
                     oOut.close();
                     socket.close();

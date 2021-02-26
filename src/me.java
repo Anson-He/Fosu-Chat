@@ -21,6 +21,7 @@ public class me {
     String user_id;//登陆界面传递过来的用户信息
     String user_name;//登陆界面传递过来的用户信息
     String user_class1;//登陆界面传递过来的用户信息
+    newfriend nf;
     public void setid(String id){
         this.user_id = id;
     }
@@ -70,7 +71,7 @@ public class me {
                     if(e.getClickCount() == 1) {
                         jp_1.remove(jl_1);
                         jf_1.repaint();
-                        newfriend nf = new newfriend();
+                        nf = new newfriend();
                         nf.setF(message.getFrom().substring(0,11));
                         nf.setT(message.getTo().substring(0,11));
                         nf.init();
@@ -222,7 +223,7 @@ public class me {
         jp_1.add(id);
         jf_1.setContentPane(jp_1);
         jf_1.setVisible(true);
-        jf_1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jf_1.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         jf_1.setLocation(550,150);
 
         //点击按钮的事件
@@ -261,7 +262,7 @@ public class me {
         try{
             sql = con.createStatement();
             rs = sql.executeQuery("select * from friend where t = "+user_id);
-            while(rs.next()){
+            if(rs.next()){
                 String f = rs.getString(1);
                 String t = rs.getString(2);
                 newfriend nf = new newfriend();

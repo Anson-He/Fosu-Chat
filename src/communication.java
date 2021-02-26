@@ -130,11 +130,6 @@ public class communication {
                 try {
                     message = new Message(f+"send",null,MessageType.TYPE_CLOSE,null);
                     oOut.writeObject(message);
-                    oIn.close();
-                    oOut.close();
-                    flag = false;
-                    es.shutdownNow();
-                    socket.close();
                     jf_3.dispose();
                 }
                 catch (IOException f){

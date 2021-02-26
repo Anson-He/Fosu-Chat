@@ -102,6 +102,7 @@ class UserThread implements Runnable{
                                             eq.printStackTrace();
                                         }
                                     }
+                                    break;
                                 }
                             }
                             catch(Exception e){
