@@ -1,4 +1,3 @@
-package index;
 //好友实例对象
 public class Student {   //学生实体类
     private String id;

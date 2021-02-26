@@ -1,20 +1,19 @@
-package index;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class myfriend extends JFrame {
-    String user_id;//登陆界面传递过来的用户信息
-    String user_name;//登陆界面传递过来的用户信息
-    String user_class1;//登陆界面传递过来的用户信息
+    myfriend m = null;
+    communication com = null;
+    List<String> f = new ArrayList<String>();//发信息列表
+    String user_id = null;//登陆界面传递过来的用户信息
+    String user_name = null;//登陆界面传递过来的用户信息
+    String user_class1 = null;//登陆界面传递过来的用户信息
     public void setid(String id){
         this.user_id = id;
     }
@@ -24,7 +23,8 @@ public class myfriend extends JFrame {
     public void setclass1(String class1){
         this.user_class1 = class1;
     }
-    private static JFrame jf_1 = null;//好友列表的框架
+
+    private static JFrame jf_2 = null;//好友列表的框架
 
 
     private static JList<Object> l = new JList<Object>();
@@ -39,12 +39,26 @@ public class myfriend extends JFrame {
         System.out.println(user_name);
         System.out.println(user_class1);
 
-        //数据库获取所有好友信息
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         con = GetDBConnection.getConnection();//连接数据库
-        System.out.println("好友列表数据库连接成功");
+        System.out.println("数据库连接成功");
+        //查看是否有新信息
+        try{
+            String s = "select f from newmes where t = "+user_id;
+            ps = con.prepareStatement(s);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                String a = rs.getString(1);
+                f.add(a);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        //数据库获取所有好友信息
         List<Student> list = new ArrayList<Student>();//好友列表
         try {
             String sql = "select * from "+user_name+user_id.substring(user_id.length()-3,user_id.length());
@@ -87,8 +101,40 @@ public class myfriend extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if(e.getClickCount() == 2) {
-
-                    System.out.println(l.getAnchorSelectionIndex());
+                    System.out.println(l.getSelectedIndex());
+                    System.out.println(list.get(l.getSelectedIndex()).getId());
+                    String x = list.get(l.getSelectedIndex()).getId();
+                    String y = list.get(l.getSelectedIndex()).getName();
+                    Connection con= null;
+                    PreparedStatement ps = null;
+                    ResultSet rs = null;
+                    Statement sql = null;
+                    con = GetDBConnection.getConnection();//连接数据库
+                    System.out.println("数据库连接成功");
+                    System.out.println(user_id);
+                    String qq = "delete from newmes where f=? and t=?";
+                    try{
+                        ps = con.prepareStatement(qq);
+                        ps.setString(1,x);
+                        ps.setString(2,user_id);
+                        ps.executeUpdate();
+                        System.out.println("删除成功");
+                        con.close();
+                    }
+                    catch (SQLException ea){
+                        ea.printStackTrace();
+                    }
+                    jf_2.dispose();
+                    m = new myfriend();
+                    m.setid(user_id);
+                    m.setname(user_name);
+                    m.setclass1(user_class1);
+                    m.init();
+                    com = new communication();
+                    com.setid(x);
+                    com.setto(y);
+                    com.setf(user_id);
+                    com.init();
                 }
             }
         });
@@ -104,6 +150,15 @@ public class myfriend extends JFrame {
                 MyContent content = (MyContent)value;
 
                 JLabel lb2 = new JLabel("<html><body>"+content.getId()+"<br>"+content.getName()+"<br>"+content.getContent()+"<body></html>");
+                if(f.contains(content.getId())){
+                    lb2.setForeground(Color.red);
+                }
+                if(isSelected){
+                    lb2.setForeground(Color.yellow);
+                }
+                if(!f.contains(content.getId())&&!isSelected){
+                    lb2.setForeground(Color.black);
+                }
                 mpr.add(lb2);
 
                 return mpr;
@@ -114,19 +169,19 @@ public class myfriend extends JFrame {
 
         //版面配置
         Font font =new Font("黑体", Font.PLAIN, 20);//设置字体
-        jf_1=new JFrame("Fosu-Chat");
-        jf_1.setSize(400, 800);
+        jf_2=new JFrame("Fosu-Chat");
+        jf_2.setSize(400, 800);
         //jf_1.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 
-        jf_1.add(jsp);
+        jf_2.add(jsp);
 
 
-        jf_1.setVisible(true);
-        jf_1.setLocation(200,50);
+        jf_2.setVisible(true);
+        jf_2.setLocation(200,50);
     }
     public void reload(){
-        jf_1.dispose();
+        jf_2.dispose();
     }
     public static void main(String args[]){
         login hl =new login();

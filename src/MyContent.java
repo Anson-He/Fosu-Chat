@@ -1,5 +1,3 @@
-package index;
-
 public class MyContent  {   //列表信息实体类
     private String name;
     private String class1;
