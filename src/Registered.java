@@ -30,7 +30,7 @@ public class Registered extends JFrame{
 
         jf_1.setResizable(false);
         //给登陆界面添加背景图片
-        ImageIcon bgim = new ImageIcon("src/b812c8fcc3cec3fd2d916676d088d43f87942702.jpg") ;//背景图案
+        ImageIcon bgim = new ImageIcon("src/fosu.jpg") ;//背景图案
         bgim.setImage(bgim.getImage().
                 getScaledInstance(bgim.getIconWidth(),
                         bgim.getIconHeight(),
