@@ -110,7 +110,7 @@ public class newfriend {
                     System.out.println("添加成功");
                     con.close();
                 } catch (SQLException ss) {
-                    JOptionPane.showMessageDialog(null, "添加失败！","恭喜",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "添加失败！","错误",JOptionPane.ERROR_MESSAGE);
                     ss.printStackTrace();
                 }
                 try{
@@ -131,9 +131,9 @@ public class newfriend {
                     ps4.executeUpdate();
                     System.out.println("添加成功");
                     con4.close();
-                    JOptionPane.showMessageDialog(null, "好友添加成功！","恭喜",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "好友添加成功！","恭喜",JOptionPane.INFORMATION_MESSAGE);
                 } catch (SQLException ss) {
-                    JOptionPane.showMessageDialog(null, "添加失败！","恭喜",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "添加失败！","错误",JOptionPane.ERROR_MESSAGE);
                     ss.printStackTrace();
                 }
                 try {

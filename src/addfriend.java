@@ -86,7 +86,7 @@ public class addfriend {
                 try {
                     message = new Message(es_name,jtf_1.getText(),MessageType.TYPE_SEND,"753621459530154984512061561894984561321");
                     oOut.writeObject(message);
-                    JOptionPane.showMessageDialog(null, "成功发送请求！","恭喜",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "成功发送请求！","恭喜",JOptionPane.INFORMATION_MESSAGE);
 
                 }
                 catch (IOException i){

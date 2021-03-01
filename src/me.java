@@ -56,7 +56,7 @@ public class me {
     public void mes(){
         System.out.println(message.getInfo());
         if(message.getInfo().equals("321456987456321123654789")){
-            JOptionPane.showMessageDialog(null, "好友添加成功,请刷新好友列表！","恭喜",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "好友添加成功,请刷新好友列表！","恭喜",JOptionPane.INFORMATION_MESSAGE);
         }
         if(message.getInfo().equals("753621459530154984512061561894984561321"))
         {
